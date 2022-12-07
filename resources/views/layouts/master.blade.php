@@ -12,6 +12,7 @@
     <title>Master</title>
 </head>
 <body>
+  <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Irfan Top Up</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,10 +50,12 @@
     <span class="sr-only">Next</span>
   </button>
 </div>
+</div>
 @yield('content')
 @stack('script')
 
 
+<div class="container">
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4">
 
@@ -136,5 +139,6 @@
 
 </footer>
 <!-- Footer -->
+</div>
 </body>
 </html>
