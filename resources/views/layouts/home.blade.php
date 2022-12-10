@@ -1,75 +1,81 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Tagihan</h1>
 <div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Listrik</h5>
-                <p class="card-text">Fast</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 20px">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i.kym-cdn.com/entries/icons/mobile/000/010/843/ricardo.jpg" class="d-block w-100" alt="...">
       </div>
-      <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">BPJS</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+      <div class="carousel-item">
+        <img src="https://i.kym-cdn.com/entries/icons/mobile/000/010/843/ricardo.jpg" class="d-block w-100" alt="...">
       </div>
-      <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">PULSA</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+      <div class="carousel-item">
+        <img src="https://i.kym-cdn.com/entries/icons/mobile/000/010/843/ricardo.jpg" class="d-block w-100" alt="...">
       </div>
     </div>
+   <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </button>
   </div>
-<br>
-<h1>Top Up Game</h1>
-<div class="container">
-    <div class="row">
-      <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Mobile Legends</h5>
-                <p class="card-text">Fast</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+  <h1 style="margin-top: 40px; margin-bottom: 40px">Tagihan</h1>
+  <div class="row">
+    <div class="col item-col">
+      <a class="a-none" href="">
+        <div class="card card-cst">
+          <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/a8/98/ba/a898baef-ba4d-3be3-9554-cf2dc5b42fa5/AppIcon-0-1x_U007emarketing-0-85-220-0-9.png/1024x1024bb.png" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5><strong>Mobile Legend</strong></h5>
+          </div>
         </div>
-      </div>
-      <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">PUBG</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-      </div>
-      <div class="col-sm">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Free Fire</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-      </div>
+      </a>
     </div>
+    <div class="col item-col">
+      <a class="a-none" href="">
+        <div class="card card-cst">
+          <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/a8/98/ba/a898baef-ba4d-3be3-9554-cf2dc5b42fa5/AppIcon-0-1x_U007emarketing-0-85-220-0-9.png/1024x1024bb.png" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5><strong>Mobile Legend</strong></h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col item-col">
+      <a class="a-none" href="">
+        <div class="card card-cst">
+          <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/a8/98/ba/a898baef-ba4d-3be3-9554-cf2dc5b42fa5/AppIcon-0-1x_U007emarketing-0-85-220-0-9.png/1024x1024bb.png" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5><strong>Mobile Legend</strong></h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col item-col">
+      <a class="a-none" href="">
+        <div class="card card-cst">
+          <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/a8/98/ba/a898baef-ba4d-3be3-9554-cf2dc5b42fa5/AppIcon-0-1x_U007emarketing-0-85-220-0-9.png/1024x1024bb.png" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5><strong>Mobile Legend</strong></h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col item-col">
+      <a class="a-none" href="">
+        <div class="card card-cst">
+          <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/a8/98/ba/a898baef-ba4d-3be3-9554-cf2dc5b42fa5/AppIcon-0-1x_U007emarketing-0-85-220-0-9.png/1024x1024bb.png" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5><strong>Mobile Legend</strong></h5>
+          </div>
+        </div>
+      </a>
+    </div>
+
   </div>
+</div>
 @endsection

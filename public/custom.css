@@ -1,0 +1,25 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.bg-cst{
+    background: #daf1f4;
+}
+.card-cst{
+    width: 15rem;
+    background: #a6ebff;
+}
+
+.a-none{
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.item-col {
+    margin-bottom:30px
+}
+
+footer{
+    margin-top: auto;
+}

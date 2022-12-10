@@ -3,15 +3,10 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center">Invoice</h1>
+    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px">Invoice</h1>
         <br>
+    <div class="card">
         <table class="table">
-            <thead>
-            <tr>
-                <th>First</th>
-                <th>Last</th>
-            </tr>
-            </thead>
             <tbody>
                 <tr>
                     <td>Nomor Transaksi</td>
@@ -46,7 +41,8 @@
                     <td>99999999</td>
                 </tr>
             </tbody>
-      </table>
+        </table>
+    </div>
 </div>
 
     

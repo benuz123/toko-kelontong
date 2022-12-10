@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-    <h1>Masukkan Data</h1>
+<div class="container" style="padding-top: 30px">
+    <h1 style="margin-bottom: 30px">Masukkan Data</h1>
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -18,8 +18,8 @@
     </div>
 </div>
 
-<div class="container">
-    <h1>Pilih Nominal</h1>
+<div class="container" style="padding-top: 30px">
+    <h1 style="margin-bottom: 30px">Pilih Nominal</h1>
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -35,8 +35,8 @@
     </div>
 </div>
 
-<div class="container">
-    <h1>Metode Pembayaran</h1>
+<div class="container" style="padding-top: 30px">
+    <h1 style="margin-bottom: 30px">Metode Pembayaran</h1>
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" style="padding-top: 30px">
     <div class="row">
         <div class="col">
             <button type="button" class="btn btn-primary btn-lg btn-block">Order</button>
