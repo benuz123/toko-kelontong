@@ -20,12 +20,7 @@ Route::get('detail', 'WebsiteController@milos');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function() {
+    Route::get('/', 'AdminController@index')->name('backoffice');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});
