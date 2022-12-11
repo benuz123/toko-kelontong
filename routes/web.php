@@ -17,3 +17,15 @@ Route::get('/', 'WebsiteController@home');
 Route::get('formtopup', 'WebsiteController@formtopup');
 Route::get('invoice', 'WebsiteController@invoice');
 Route::get('detail', 'WebsiteController@milos');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
