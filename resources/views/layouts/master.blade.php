@@ -56,8 +56,8 @@
       <div class="col-md-6 mt-md-0 mt-3">
 
         <!-- Content -->
-        <h5 class="text-uppercase">Irfan Top Up</h5>
-        <p>Murah, Cepat, Mudah, Terpercaya dan Pelayanan 24 jam</p>
+        <h5 class="text-uppercase text-color">Irfan Top Up</h5>
+        <p class="text-color">Murah, Cepat, Mudah, Terpercaya dan Pelayanan 24 jam</p>
 
       </div>
       <!-- Grid column -->
@@ -68,19 +68,19 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Follow Us</h5>
+        <h5 class="text-uppercase text-color">Follow Us</h5>
 
         <ul class="list-unstyled">
           <li>
-            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-instagram text-color" aria-hidden="true"></i>
             <a href="#!">Instagram</a>
           </li>
           <li>
-            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+            <i class="fa fa-facebook-square text-color" aria-hidden="true"></i>
             <a href="#!">Facebook</a>
           </li>
           <li>
-            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            <i class="fa fa-twitter-square text-color" aria-hidden="true"></i>
             <a href="#!">Twitter</a>
           </li>
         </ul>
@@ -92,19 +92,19 @@
       <div class="col-md-3 mb-md-0 mb-3">
 
         <!-- Links -->
-        <h5 class="text-uppercase">Contact Us</h5>
+        <h5 class="text-uppercase text-color">Contact Us</h5>
 
         <ul class="list-unstyled">
           <li>
-            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+            <i class="fa fa-whatsapp text-color" aria-hidden="true"></i>
             <a href="#!">Whatsapp</a>
           </li>
           <li>
-            <i class="fa fa-telegram" aria-hidden="true"></i>
+            <i class="fa fa-telegram text-color" aria-hidden="true"></i>
             <a href="#!">Telegram</a>
           </li>
           <li>
-            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-instagram text-color" aria-hidden="true"></i>
             <a href="#!">Instagram</a>
           </li>
         </ul>
@@ -119,7 +119,7 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+  <div class="footer-copyright text-center py-3 text-color">© 2022 Copyright:
     <a href="/"> tokokelontongmasirfan.net</a>
   </div>
   <!-- Copyright -->

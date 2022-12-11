@@ -4,11 +4,12 @@ body {
     flex-direction: column;
 }
 .bg-cst{
-    background: #daf1f4;
+    background: rgba(20,27,61,1);
 }
 .card-cst{
-    width: 15rem;
-    background: #a6ebff;
+    width: 11rem;
+    background: transparent;
+    border: 0ch;
 }
 
 .a-none{
@@ -16,8 +17,16 @@ body {
     text-decoration: none !important;
 }
 
+.text-color{
+ color: aliceblue;
+}
+
 .item-col {
     margin-bottom:30px
+}
+
+.icon {
+    border-radius: 20px;
 }
 
 footer{
