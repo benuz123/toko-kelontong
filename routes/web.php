@@ -22,11 +22,21 @@ Auth::routes();
 
 Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function() {
     Route::get('/', 'AdminController@index')->name('backoffice');
+
+    //product
     Route::get('product', 'ProductController@index')->name('product');
     Route::get('product/add', 'ProductController@tambah_product')->name('product-add');
+    Route::get('product/edit/{id}', 'ProductController@edit_product')->name('product-edit');
     Route::post('product', 'ProductController@simpan_product')->name('product-simpan');
+    Route::put('product', 'ProductController@update_product')->name('product-update');
+    Route::delete('product/hapus{id}', 'ProductController@hapus_product')->name('product-delete');
+
+    //detail 
     Route::get('detail', 'ProductDetailController@index')->name('product-detail');
     Route::get('detail/add', 'ProductDetailController@tambah_detail')->name('product-detail-add');
+    Route::get('detail/edit/{id}', 'ProductDetailController@edit_detail')->name('product-detail-edit');
     Route::post('detail', 'ProductDetailController@simpan_detail')->name('product-detail-simpan');
+    Route::put('detail', 'ProductDetailController@update_detail')->name('product-detail-update');
+    Route::delete('detail/hapus/{id}', 'ProductDetailController@hapus_detail')->name('product-detail-delete');
 
 });

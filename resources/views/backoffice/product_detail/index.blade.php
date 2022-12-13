@@ -37,7 +37,16 @@
                         <td>{{$detail->name}}</td>
                         <td>{{$detail->code}}</td>
                         <td>{{$detail->price}}</td>
-                    </tr>
+
+                        <td class="row">
+                          <a href="{{route('product-detail-edit', $detail->id)}}" class="btn btn-success btn-sm edit-button ml-3" >Edit</a>
+                          <form action="{{route('product-detail-delete', $detail->id)}}" method="POST" >
+                            @csrf
+                            @method('DELETE')
+                            <button  type="submit" class="btn btn-danger btn-sm delete-button ml-3">Delete</button>
+                          </form>
+                        </td>
+                    </tr>                    
                     @endforeach
             </tbody>
         </table>

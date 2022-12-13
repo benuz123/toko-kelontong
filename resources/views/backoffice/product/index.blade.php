@@ -28,6 +28,7 @@
                     <th>Kode</th>
                     <th>Tipe</th>
                     <th>Status</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,14 @@
                         <td>{{$product->code}}</td>
                         <td>{{$product->type}}</td>
                         <td>{{$product->status}}</td>
+                        <td class="row">
+                          <a href="{{route('product-edit', $product->id)}}" class="btn btn-success btn-sm edit-button ml-3" >Edit</a>
+                          <form action="{{route('product-delete', $product->id)}}" method="POST" >
+                            @csrf
+                            @method('DELETE')
+                            <button  type="submit" class="btn btn-danger btn-sm delete-button ml-3">Delete</button>
+                          </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

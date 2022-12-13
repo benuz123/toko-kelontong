@@ -37,4 +37,49 @@ class ProductController extends Controller
         return redirect()->route('product');
         
     }
+
+    public function edit_product($id)
+    {
+        $product = Product::where('id', $id)->first();
+        if ($product) {
+            return view('backoffice.product.edit', [
+                'product' => $product
+            ]);
+        } else{
+            return redirect()->route('product');
+        }
+    }
+
+    public function update_product(Request $request)
+    {
+        //menyimpan
+        $product = Product::where('id', $request->id)->first();
+
+        if ($product == null) {
+            return redirect()->route('backoffice');
+        } 
+
+        $product->update([
+            'name'      => $request->name,
+            'status'    => $request->status,
+            'type'      => $request->type,
+            'img'       => $request->img,
+            'code'      => $request->code,
+            'slug'      => Str::slug($request->name)
+        ]);
+
+        return redirect()->route('product');
+        
+    }
+
+    public function hapus_product($id)
+    {
+        $product = Product::where('id', $id)->first();
+        if ($product) {
+            $product->delete();
+            return redirect()->route('product');
+        } else{
+            return redirect()->route('product');
+        }
+    }
 }
