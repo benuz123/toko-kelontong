@@ -24,7 +24,6 @@
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>product ID</th>
                     <th>Detail Product</th>
                     <th>Kode</th>
                     <th>Harga</th>
@@ -33,7 +32,6 @@
             <tbody>
               @foreach ($details as $detail)
                     <tr>
-                        <td>{{$detail->product_id}}</td>
                         <td>{{$detail->name}}</td>
                         <td>{{$detail->code}}</td>
                         <td>{{$detail->price}}</td>

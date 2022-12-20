@@ -24,7 +24,7 @@
           <label>Produk</label>
           <select class="form-control" name="product_id">
             @foreach($products as $productx)
-              <option @if($product->value == $productx->value) selected @endif>{{$productx->name}}</option>
+              <option @if($product->product_id == $productx->id) value="{{$productx->id}}" selected @endif>{{$productx->name}}</option>
             @endforeach
           </select>
         </div>

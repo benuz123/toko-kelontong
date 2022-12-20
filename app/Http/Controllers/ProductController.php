@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Product;
+use App\Parameter;
+use App\ParameterProduct;
 
 class ProductController extends Controller
 {
     public function index()
     {
+        //mengambil produk dari database
         $products = Product::get();
         return view('backoffice.product.index', [ 
             'products' => $products
@@ -18,14 +21,17 @@ class ProductController extends Controller
 
     public function tambah_product()
     {
-        return view('backoffice.product.add');
+        $parameters = Parameter::get();
+        return view('backoffice.product.add', [
+            'parameters' => $parameters
+        ]);
     }
 
     public function simpan_product(Request $request)
     {
         //menyimpan
-
-        Product::create([
+        //  dd($request->parameters);
+        $product = Product::create([
             'name'      => $request->name,
             'status'    => $request->status,
             'type'      => $request->type,
@@ -34,16 +40,25 @@ class ProductController extends Controller
             'slug'      => Str::slug($request->name)
         ]);
 
+        foreach ($request->parameters as $key => $parameter) {
+            ParameterProduct::create([
+                'parameter_id' => $parameter,
+                'product_id' => $product->id
+            ]);
+        }
+
         return redirect()->route('product');
         
     }
 
     public function edit_product($id)
     {
-        $product = Product::where('id', $id)->first();
+        $product = Product::with('parameter')->where('id', $id)->first();
+        $parameters = Parameter::get();
         if ($product) {
             return view('backoffice.product.edit', [
-                'product' => $product
+                'product' => $product,
+                'parameters' => $parameters
             ]);
         } else{
             return redirect()->route('product');
@@ -67,6 +82,18 @@ class ProductController extends Controller
             'code'      => $request->code,
             'slug'      => Str::slug($request->name)
         ]);
+
+        //data relasi dihapus semua
+        ParameterProduct::where('product_id' , $product->id)->delete();
+
+        //diisi ulang
+        foreach ($request->parameters as $key => $parameter) {
+            ParameterProduct::create([
+                'parameter_id' => $parameter,
+                'product_id' => $product->id
+            ]);
+        }
+
 
         return redirect()->route('product');
         

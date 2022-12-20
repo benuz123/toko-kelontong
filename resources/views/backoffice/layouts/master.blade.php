@@ -19,6 +19,7 @@
   <link rel="stylesheet" href={{asset("dist/css/adminlte.min.css")}}>
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href={{asset("plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}>
+  @stack('css')
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -126,6 +127,12 @@
               <p>Detail Produk</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('parameter')}}" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Parameter</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -174,6 +181,6 @@
 <script src={{asset("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}></script>
 <!-- AdminLTE App -->
 <script src={{asset("dist/js/adminlte.js")}}></script>
-
+@stack('script')
 </body>
 </html>

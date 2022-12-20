@@ -24,8 +24,42 @@
       <span class="sr-only">Next</span>
     </button>
   </div>
-  <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">Tagihan Pascabayar</h1>
-  <div class="row">
+
+  {{-- <div class="row">
+  @foreach ($products as $product)
+    <div class="col col-md-2 item-col">
+      <a class="a-none" href="">
+        <div class="card card-cst">
+          <img src="{{$product->img}}" class="card-img-top icon" alt="tagihan-pln">
+          <div class="card-body text-center">
+            <h6 class="text-color"><strong>{{$product->name}}</strong></h6>
+          </div>
+        </div>
+      </a>
+    </div> 
+  @endforeach
+  </div> --}}
+
+@foreach ($products as $key => $product)
+<h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">{{$key}}</h1>
+<div class="row">
+  @foreach ($product as $item)
+  <div class="col col-md-2 item-col">
+    <a class="a-none" href="/formtopup/{{$item->slug}}">
+      <div class="card card-cst">
+        <img src="{{$item->img}}" class="card-img-top icon" alt="tagihan-pln">
+        <div class="card-body text-center">
+          <h6 class="text-color"><strong>{{$item->name}}</strong></h6>
+        </div>
+      </div>
+    </a>
+  </div> 
+  @endforeach
+</div>
+@endforeach
+
+  {{-- <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">Tagihan Pascabayar</h1> --}}
+  {{-- <div class="row">
     <div class="col col-md-2 item-col">
       <a class="a-none" href="">
         <div class="card card-cst">
@@ -56,10 +90,10 @@
         </div>
       </a>
     </div>
-  </div>
+  </div> --}}
 
-  <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">Listrik & Pulsa</h1>
-  <div class="row">
+  {{-- <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">Listrik & Pulsa</h1> --}}
+  {{-- <div class="row">
     <div class="col col-md-2 item-col">
       <a class="a-none" href="">
         <div class="card card-cst">
@@ -130,10 +164,10 @@
         </div>
       </a>
     </div>
-  </div>
+  </div> --}}
 
-  <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">Data</h1>
-  <div class="row">
+  {{-- <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">Data</h1> --}}
+  {{-- <div class="row">
     <div class="col col-md-2 item-col">
       <a class="a-none" href="">
         <div class="card card-cst">
@@ -194,10 +228,10 @@
         </div>
       </a>
     </div>
-  </div>
+  </div> --}}
 
-  <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">TopUp Game</h1>
-  <div class="row">
+ {{-- <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">TopUp Game</h1> --}}
+  {{-- <div class="row">
     <div class="col col-md-2 item-col">
       <a class="a-none" href="">
         <div class="card card-cst">
@@ -278,10 +312,10 @@
         </div>
       </a>
     </div>
-  </div>
+  </div> --}}
 
-  <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">TopUp E-Wallet</h1>
-  <div class="row">
+  {{-- <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">TopUp E-Wallet</h1> --}}
+  {{-- <div class="row">
     <div class="col item-col">
       <a class="a-none" href="">
         <div class="card card-cst">
@@ -332,7 +366,7 @@
         </div>
       </a>
     </div>
-  </div>
+  </div> --}}
 
 </div>
 @endsection

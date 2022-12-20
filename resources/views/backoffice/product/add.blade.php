@@ -17,6 +17,15 @@
           <input type="text" class="form-control" name="name" placeholder="nama produk">
         </div>
         <div class="form-group">
+          <label>Parameter</label>
+          <select class="select2 " name="parameters[]" multiple="multiple" data-placeholder="Pilih Parameter"
+                  style="width: 100%;">
+            @foreach ($parameters as $parameter)
+                <option value="{{$parameter->id}}">{{$parameter->name}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
             <label >Status Produk</label>
             <select class="form-control" name="status">
               <option value="1">Aktif </option>
@@ -29,6 +38,8 @@
               <option value="Game">Game </option>
               <option value="Pascabayar">Pascabayar</option>
               <option value="Prabayar">Prabayar</option>
+              <option value="Voucer">Voucer</option>
+              <option value="E-Money">E-Money</option>
             </select>
           </div>
           <div class="form-group">
@@ -48,3 +59,14 @@
     </form>
   </div>
 @endsection
+
+@push('script')
+  <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+  <script>
+    $('.select2').select2()
+  </script>
+@endpush
+
+@push('css')
+<link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+@endpush

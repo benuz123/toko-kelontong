@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'WebsiteController@home');
-Route::get('formtopup', 'WebsiteController@formtopup');
+Route::get('formtopup/{slug}', 'WebsiteController@formtopup');
 Route::get('invoice', 'WebsiteController@invoice');
 Route::get('detail', 'WebsiteController@milos');
+Route::get('test', 'XenditController@channel_list')->name('test');
+
 
 Auth::routes();
 
@@ -39,4 +41,11 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function() {
     Route::put('detail', 'ProductDetailController@update_detail')->name('product-detail-update');
     Route::delete('detail/hapus/{id}', 'ProductDetailController@hapus_detail')->name('product-detail-delete');
 
+    //parameter
+    Route::get('parameter', 'ParameterController@index')->name('parameter');
+    Route::get('parameter/add', 'ParameterController@tambah_parameter')->name('parameter-add');
+    Route::get('parameter/edit/{id}', 'ParameterController@edit_parameter')->name('parameter-edit');
+    Route::post('parameter', 'ParameterController@simpan_parameter')->name('parameter-simpan');
+    Route::put('parameter', 'ParameterController@update_parameter')->name('parameter-update');
+    Route::delete('parameter/hapus/{id}', 'ParameterController@hapus_parameter')->name('parameter-delete');
 });

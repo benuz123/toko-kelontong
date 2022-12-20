@@ -19,6 +19,21 @@
           <input type="text" class="form-control" name="name" placeholder="nama produk" value="{{$product->name}}">
         </div>
         <div class="form-group">
+          <label>Parameter</label>
+          <select class="select2 " name="parameters[]" multiple="multiple" data-placeholder="Pilih Parameter"
+                  style="width: 100%;">
+            @foreach ($parameters as $parameter)
+              @php $cek = false @endphp 
+                @foreach ($product->parameter as $parameter_dipakai)
+                  @if ($parameter_dipakai->id == $parameter->id)
+                      @php $cek = true @endphp 
+                  @endif
+                @endforeach
+                <option value="{{$parameter->id}}" @if($cek == true) selected="selected" @endif>{{$parameter->name}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
             <label >Status Produk</label>
             <select class="form-control" name="status">
               <option @if($product->status == 1) selected @endif value="1">Aktif </option>
@@ -31,6 +46,8 @@
               <option @if($product->type == 'Game') selected @endif value="Game">Game </option>
               <option @if($product->type == 'Pascabayar') selected @endif value="Pascabayar">Pascabayar</option>
               <option @if($product->type == 'Prabayar') selected @endif value="Prabayar">Prabayar</option>
+              <option @if($product->type == 'Voucer') selected @endif value="Voucer">Voucer</option>
+              <option @if($product->type == 'E-Money') selected @endif value="E-Money">E-Money</option>
             </select>
           </div>
           <div class="form-group">
@@ -50,3 +67,14 @@
     </form>
   </div>
 @endsection
+
+@push('script')
+  <script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+  <script>
+    $('.select2').select2()
+  </script>
+@endpush
+
+@push('css')
+<link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+@endpush
