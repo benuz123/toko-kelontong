@@ -10,36 +10,48 @@
             <tbody>
                 <tr>
                     <td>Nomor Transaksi</td>
-                    <td>99999999</td>
+                    <td>{{$transaction->invoice_id}}</td>
                 </tr>
                 <tr>
-                    <td>Jenis Produk</td>
-                    <td>99999999</td>
+                    <td>Produk</td>
+                    <td>{{$transaction->product->name}}</td>
                 </tr>
                 <tr>
-                    <td>Nominal Pembelian</td>
-                    <td>99999999</td>
+                    <td>Harga</td>
+                    <td>Rp. {{$transaction->amount}}</td>
                 </tr>
                 <tr>
                     <td>Nickname</td>
-                    <td>99999999</td>
+                    <td>{{$transaction->nickname ? $transaction->nickname : '-'}}</td>
                 </tr>
                 <tr>
                     <td>Metode Pembayaran</td>
-                    <td>99999999</td>
+                    <td>{{$channel['name']}}</td>
                 </tr>
                 <tr>
                     <td>Status Pembayaran</td>
-                    <td>99999999</td>
+                    <td>{{$payment_status}}</td>
                 </tr>
                 <tr>
                     <td>Status Transaksi</td>
-                    <td>99999999</td>
+                    <td>{{$transaction_status}}</td>
                 </tr>
                 <tr>
                     <td>Total Tagihan</td>
-                    <td>99999999</td>
+                    <td>Rp. {{$transaction->total_amount}}</td>
                 </tr>
+                @if ($transaction->va_number != null)
+                    <tr>
+                        <td>Kode Pembayaran</td>
+                        <td>{{$transaction->va_number}}</td>
+                    </tr>
+                @endif
+                @if ($transaction->qr_string != null)
+                    <tr>
+                        <td>Kode QRIS</td>
+                        <td>{{ QrCode::size(300)->generate($transaction->qr_string) }}</td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>

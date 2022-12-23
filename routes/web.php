@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'WebsiteController@home');
 Route::get('formtopup/{slug}', 'WebsiteController@formtopup');
-Route::get('invoice', 'WebsiteController@invoice');
+Route::get('invoice/{invoice_id}', 'WebsiteController@invoice')->name('invoice');
 Route::get('detail', 'WebsiteController@milos');
 Route::get('test', 'XenditController@channel_list')->name('test');
 Route::post('create-order', 'TransactionController@create_transaction')->name('create-order');
+Route::post('confirm-order', 'WebsiteController@confirm_order')->name('confirm-order');
 
 
 Auth::routes();

@@ -45,13 +45,14 @@ class TransactionController extends Controller
         $result = $xendit->create_payment($data->invoice_id);
         $result = json_decode(json_encode($result));
         
-        $data = Transaction::where('id', $data->id)->first();
-        $data->payment_id = $result->id;
-        $data->qr_string = !empty($result->qr_string) ? $result->qr_string : '';
-        $data->va_number = !empty($result->account_number) ? $result->account_number : $result->payment_code;
-        $data->save();
+        $transaction = Transaction::where('invoice_id', $data->invoice_id)->first();
+        $transaction->payment_id = $result->id;
+        $transaction->qr_string = !empty($result->qr_string) ? $result->qr_string : '';
 
-        dd($data);
+        $transaction->va_number = !empty($result->account_number) ? $result->account_number : (!empty($result->payment_code) ? $result->payment_code : '');
+        $transaction->save();
+
+        return redirect()->route('invoice', $transaction->invoice_id);
     }
 
     public function cek_admin_fee($amount, $code)

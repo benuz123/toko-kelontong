@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>{{$product->name}}</h1>
-<form action="{{route('create-order')}}" method="POST">
+<form action="{{route('confirm-order')}}" method="POST">
     @csrf
     <input type="hidden" name="product_code" value="{{$product->code}}">
 <div class="container" style="padding-top: 30px">

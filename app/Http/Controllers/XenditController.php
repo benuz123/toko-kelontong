@@ -51,11 +51,10 @@ class XenditController extends Controller
         $params = [
             'external_id' => $data->invoice_id,
             'type' => 'DYNAMIC',
-            'callback_url' => 'www.google.com',
+            'callback_url' => 'https://google.com',
             'amount' => round(intval($data->total_amount)),
         ];
-        
-        dd($params);
+        // dd($params);
         $result = \Xendit\QRCode::create($params);
         return $result;
     }
@@ -93,5 +92,10 @@ class XenditController extends Controller
         $result = \Xendit\Retail::create($params);
         return $result;
 
+    }
+
+    public function callback(Type $var = null)
+    {
+        # code...
     }
 }

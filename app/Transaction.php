@@ -23,4 +23,9 @@ class Transaction extends Model
     'qr_string',
     'va_number'
     ];
+
+    public function product()
+    {
+        return $this->HasOne('App\ProductDetail', 'code', 'product_id');
+    }
 }
