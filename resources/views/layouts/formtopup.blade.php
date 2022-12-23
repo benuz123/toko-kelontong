@@ -3,6 +3,9 @@
 @section('content')
 
 <h1>{{$product->name}}</h1>
+<form action="{{route('create-order')}}" method="POST">
+    @csrf
+    <input type="hidden" name="product_code" value="{{$product->code}}">
 <div class="container" style="padding-top: 30px">
     <h1 style="margin-bottom: 30px">Masukkan Data</h1>
     <div class="row">
@@ -21,7 +24,7 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select name="product_id" class="form-control" id="exampleFormControlSelect1">
                     @foreach ($product->product_details as $item)
                     <option value="{{$item->code}}">{{$item->name}}</option>
                     @endforeach
@@ -40,7 +43,7 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select name="channel_code" class="form-control" id="exampleFormControlSelect1">
                     @foreach ($channels as $channel)
                         <option value="{{$channel['channel_code']}}">{{$channel['name']}}</option>
                     @endforeach
@@ -58,8 +61,9 @@
 <div class="container" style="padding-top: 30px">
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-primary btn-lg btn-block">Order</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Order</button>
         </div>
     </div>
 </div>
+</form>
 @endsection

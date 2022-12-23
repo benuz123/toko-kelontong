@@ -18,6 +18,7 @@ Route::get('formtopup/{slug}', 'WebsiteController@formtopup');
 Route::get('invoice', 'WebsiteController@invoice');
 Route::get('detail', 'WebsiteController@milos');
 Route::get('test', 'XenditController@channel_list')->name('test');
+Route::post('create-order', 'TransactionController@create_transaction')->name('create-order');
 
 
 Auth::routes();

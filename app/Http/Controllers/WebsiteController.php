@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Controllers\XenditController;
+use App\Http\Controller\TransactionController;
+use App\Transaction;
 
 class WebsiteController extends Controller
 {
@@ -25,9 +27,11 @@ class WebsiteController extends Controller
         return view('layouts.formtopup', ['product' => $product, 'channels' => $channels]);
     }
 
+
     public function invoice()
     {
         return view('layouts.invoice');
     }
+
     
 }
