@@ -51,7 +51,7 @@ class XenditController extends Controller
         $params = [
             'external_id' => $data->invoice_id,
             'type' => 'DYNAMIC',
-            'callback_url' => 'https://google.com',
+            'callback_url' => route('xendit-callback'),
             'amount' => round(intval($data->total_amount)),
         ];
         // dd($params);
