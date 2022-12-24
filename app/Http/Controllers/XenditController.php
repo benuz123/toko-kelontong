@@ -96,6 +96,54 @@ class XenditController extends Controller
 
     public function callback(Type $var = null)
     {
-        # code...
+        $token = env('XENDIT_CALLBACK_TOKEN');
+        if ($request->header('x-callback-token') == $token) {
+            
+            //Check CAllback Payment Type
+            if ($request->event == 'qr.payment') {
+                $transaction = Transaction::where('invoice_id', $request->qr_code['external_id'])->first();
+                if(!$transaction){
+                    return json_encode([
+                        'status' => 'FAILED'
+                    ]);
+                }
+                $transaction->payment_status = 1;
+                if ($request->status === 'COMPLETED') {
+                    $transaction->save();
+                } else {
+                    $transaction->payment_status = 3;
+                    $transaction->save();
+                }
+            } elseif ($request->callback_virtual_account_id) {
+                $transaction = Transaction::where('invoice_id', $request->external_id)->first();
+                if(!$transaction){
+                    return json_encode([
+                        'status' => 'FAILED'
+                    ]);
+                }
+                $transaction->payment_status = 1;
+                $transaction->save();
+            }elseif ($request->retail_outlet_name) {
+                $transaction = Transaction::where('invoice_id', $request->external_id)->first();
+                if(!$transaction){
+                    return json_encode([
+                        'status' => 'FAILED'
+                    ]);
+                }
+                $transaction->payment_status = 1;
+                $transaction->save();
+            } else {
+                // Do Nothing
+            }
+            
+            
+            return response()->json([
+                'message' => 'OK'
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'FAILED'
+            ], 500);
+        }
     }
 }
