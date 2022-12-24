@@ -101,7 +101,7 @@ class XenditController extends Controller
             
             //Check CAllback Payment Type
             if ($request->event == 'qr.payment') {
-                $transaction = Transaction::where('invoice_id', $request->data['reference_id'])->first();
+                $transaction = Transaction::where('invoice_id', $request->qr_code['external_id'])->first();
                 if(!$transaction){
                     return json_encode([
                         'status' => 'FAILED'
