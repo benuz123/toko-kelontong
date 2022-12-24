@@ -94,7 +94,7 @@ class XenditController extends Controller
 
     }
 
-    public function callback(Type $var = null)
+    public function callback(Request $request)
     {
         $token = env('XENDIT_CALLBACK_TOKEN');
         if ($request->header('x-callback-token') == $token) {
