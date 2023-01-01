@@ -109,8 +109,8 @@ class XenditController extends Controller
                         'status' => 'FAILED'
                     ]);
                 }
-                $transaction->payment_status = 1;
                 if ($request->status === 'COMPLETED') {
+                    $transaction->payment_status = 1;
                     $transaction->save();
                     //send ke biller
                     $client = new Client;
@@ -129,7 +129,11 @@ class XenditController extends Controller
                         'body'      => $body
                     ];
                     $result = $client->post(env('BILLER_API_URL')."transaction", $send)->getBody()->getContents();
-                    $data = json_decode($result);
+                    $response = json_decode($result);
+
+                    $transaction->transaction_status = $response->data->transaction_status;
+                    $transaction->save();
+
                 } else {
                     $transaction->payment_status = 3;
                     $transaction->save();
