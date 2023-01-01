@@ -21,6 +21,7 @@ Route::get('test', 'XenditController@channel_list')->name('test');
 Route::post('create-order', 'TransactionController@create_transaction')->name('create-order');
 Route::post('confirm-order', 'WebsiteController@confirm_order')->name('confirm-order');
 Route::post('xendit/callback', 'XenditController@callback')->name('xendit-callback');
+Route::post('biller/callback', 'BillerController@callback')->name('biller-callback');
 
 
 Auth::routes();

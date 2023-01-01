@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 use Xendit\Xendit;
 use App\Transaction;
@@ -110,6 +112,26 @@ class XenditController extends Controller
                 $transaction->payment_status = 1;
                 if ($request->status === 'COMPLETED') {
                     $transaction->save();
+                    //send ke biller
+                    $client = new Client;
+                    $body = json_encode([
+                        'invoice_id'    => $transaction->invoice_id,
+                        'customer_number'  => $transaction->customer_number,
+                        'product_code'  => $transaction->product_id,
+                    ]);
+                    $headers = [
+                        'Content-Type'  => 'application/json', 
+                        'Accept'        => 'application/json',
+                        'XXX-Signature' => 'sha1=' . hash_hmac('sha1', $body, env('BILLER_API_SECRET'))
+                        ];
+                    $send = [
+                        'headers'   => $headers,
+                        'body'      => $body
+                    ];
+                    $result = $client->post(env('BILLER_API_URL')."transaction", $send)->getBody()->getContents();
+                    return $result;
+                    $data = json_decode($result);
+                    dd($data);
                 } else {
                     $transaction->payment_status = 3;
                     $transaction->save();
@@ -142,7 +164,7 @@ class XenditController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'status' => 'FAILED'
+                'message' => 'Signature Failed'
             ], 500);
         }
     }
