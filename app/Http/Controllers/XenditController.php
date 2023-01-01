@@ -129,9 +129,7 @@ class XenditController extends Controller
                         'body'      => $body
                     ];
                     $result = $client->post(env('BILLER_API_URL')."transaction", $send)->getBody()->getContents();
-                    return $result;
                     $data = json_decode($result);
-                    dd($data);
                 } else {
                     $transaction->payment_status = 3;
                     $transaction->save();
