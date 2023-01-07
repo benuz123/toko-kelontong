@@ -52,4 +52,7 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function() {
     Route::post('parameter', 'ParameterController@simpan_parameter')->name('parameter-simpan');
     Route::put('parameter', 'ParameterController@update_parameter')->name('parameter-update');
     Route::delete('parameter/hapus/{id}', 'ParameterController@hapus_parameter')->name('parameter-delete');
+
+    Route::get('transaction', 'TransactionController@index')->name('transaction');
+    Route::get('biller/product', 'BillerController@list_product')->name('biller-product');
 });

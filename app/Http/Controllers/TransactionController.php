@@ -80,4 +80,11 @@ class TransactionController extends Controller
             return $request->no_pelanggan;
         }
     }
+
+    public function index()
+    {
+        $data = Transaction::with('product')->orderBy('created_at')->get();
+
+        return view('backoffice.transaction.index', ['transactions' => $data]);
+    }
 }
