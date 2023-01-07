@@ -2,12 +2,13 @@
 
 @section('content')
 
-<h1>{{$product->name}}</h1>
+
 <form action="{{route('confirm-order')}}" method="POST">
     @csrf
     <input type="hidden" name="product_code" value="{{$product->code}}">
 <div class="container" style="padding-top: 30px">
-    <h1 style="margin-bottom: 30px">Masukkan Data</h1>
+    <h1 style="margin-bottom: 30px" class="text-white text-center" >{{$product->name}}</h1>
+    <h1 style="margin-bottom: 30px" class="text-white" >Masukkan Data</h1>
     <div class="row">
         @foreach ($product->parameter as $parameter)
             <div class="col">
@@ -20,7 +21,7 @@
 </div>
 
 <div class="container" style="padding-top: 30px">
-    <h1 style="margin-bottom: 30px">Pilih Nominal</h1>
+    <h1 style="margin-bottom: 30px" class="text-white">Pilih Nominal</h1>
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -39,7 +40,7 @@
 </div>
 
 <div class="container" style="padding-top: 30px">
-    <h1 style="margin-bottom: 30px">Metode Pembayaran</h1>
+    <h1 style="margin-bottom: 30px" class="text-white">Metode Pembayaran</h1>
     <div class="row">
         <div class="col">
             <div class="form-group">

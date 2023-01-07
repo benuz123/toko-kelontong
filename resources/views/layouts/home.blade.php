@@ -6,13 +6,7 @@
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 20px">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="https://i.kym-cdn.com/entries/icons/mobile/000/010/843/ricardo.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://i.kym-cdn.com/entries/icons/mobile/000/010/843/ricardo.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://i.kym-cdn.com/entries/icons/mobile/000/010/843/ricardo.jpg" class="d-block w-100" alt="...">
+        <img src="{{asset('logo/banner.png')}}" class="d-block w-100" alt="...">
       </div>
     </div>
    <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
