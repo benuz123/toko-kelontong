@@ -16,7 +16,7 @@
                     @foreach($item->product_details as $sub)
                         <tr>
                             <td>{{$sub->name}}</td>
-                            <td>1000</td>
+                            <td>Rp. {{$sub->price}}</td>
                             <td>{{$sub->code}}</td>
                         </tr>
                     @endforeach
