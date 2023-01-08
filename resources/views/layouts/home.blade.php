@@ -38,14 +38,10 @@
 <h1 class="text-color" style="margin-top: 40px; margin-bottom: 40px">{{$key}}</h1>
 <div class="row">
   @foreach ($product as $item)
-  <div class="col col-md-2 item-col">
+  <div class="col col-md-2 item-col text-center">
     <a class="a-none" href="/formtopup/{{$item->slug}}">
-      <div class="card card-cst">
-        <img src="{{$item->img}}" class="card-img-top icon" alt="tagihan-pln">
-        <div class="card-body text-center">
-          <h6 class="text-color"><strong>{{$item->name}}</strong></h6>
-        </div>
-      </div>
+      <img src="{{$item->img}}" class="icon img-fluid">
+        <h6 class="text-color"><strong>{{$item->name}}</strong></h6>
     </a>
   </div> 
   @endforeach
