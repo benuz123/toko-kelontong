@@ -118,6 +118,7 @@ class XenditController extends Controller
                         'invoice_id'    => $transaction->invoice_id,
                         'customer_number'  => $transaction->customer_number,
                         'product_code'  => $transaction->product_id,
+                        'biller_ref_id' => !empty($transaction->biller_ref_id) ? $transaction->biller_ref_id : null
                     ]);
                     $headers = [
                         'Content-Type'  => 'application/json', 
@@ -143,10 +144,29 @@ class XenditController extends Controller
                 if(!$transaction){
                     return json_encode([
                         'status' => 'FAILED'
-                    ]);
+                    ]);  
                 }
-                $transaction->payment_status = 1;
-                $transaction->save();
+                 $client = new Client;
+                 $body = json_encode([
+                     'invoice_id'    => $transaction->invoice_id,
+                     'customer_number'  => $transaction->customer_number,
+                     'product_code'  => $transaction->product_id,
+                     'biller_ref_id' => !empty($transaction->biller_ref_id) ? $transaction->biller_ref_id : null
+                 ]);
+                 $headers = [
+                     'Content-Type'  => 'application/json', 
+                     'Accept'        => 'application/json',
+                     'XXX-Signature' => 'sha1=' . hash_hmac('sha1', $body, env('BILLER_API_SECRET'))
+                     ];
+                 $send = [
+                     'headers'   => $headers,
+                     'body'      => $body
+                 ];
+                 $result = $client->post(env('BILLER_API_URL')."transaction", $send)->getBody()->getContents();
+                 $response = json_decode($result);
+
+                 $transaction->transaction_status = $response->data->transaction_status;
+                 $transaction->save();
             }elseif ($request->retail_outlet_name) {
                 $transaction = Transaction::where('invoice_id', $request->external_id)->first();
                 if(!$transaction){

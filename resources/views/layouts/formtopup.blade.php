@@ -2,13 +2,21 @@
 
 @section('content')
 
-
 <form action="{{route('confirm-order')}}" method="POST">
     @csrf
     <input type="hidden" name="product_code" value="{{$product->code}}">
-<div class="container" style="padding-top: 30px">
-    <h1 style="margin-bottom: 30px" class="text-white text-center" >{{$product->name}}</h1>
-    <h1 style="margin-bottom: 30px" class="text-white" >Masukkan Data</h1>
+    <div class="container" style="padding-top: 30px">
+        <h1 style="margin-bottom: 30px" class="text-white text-center" >{{$product->name}}</h1>
+        @if ($message = Session::get('error'))
+        <div class="alert alert-danger" role="alert">
+            {{$message}}
+          </div>
+        @elseif($errors->any())
+        <div class="alert alert-danger" role="alert">
+            {{$errors}}
+          </div>
+        @endif
+        <h1 style="margin-bottom: 30px" class="text-white" >Masukkan Data</h1>
     <div class="row">
         @foreach ($product->parameter as $parameter)
             <div class="col">

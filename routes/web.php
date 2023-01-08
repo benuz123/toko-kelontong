@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'WebsiteController@home');
-Route::get('formtopup/{slug}', 'WebsiteController@formtopup');
+Route::get('formtopup/{slug}', 'WebsiteController@formtopup')->name('formtopup');
 Route::get('invoice/{invoice_id}', 'WebsiteController@invoice')->name('invoice');
 Route::get('detail', 'WebsiteController@milos');
 Route::get('test', 'XenditController@channel_list')->name('test');

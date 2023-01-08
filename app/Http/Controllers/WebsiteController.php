@@ -8,6 +8,8 @@ use App\Http\Controllers\XenditController;
 use App\Http\Controllers\TransactionController;
 use App\Transaction;
 use App\ProductDetail;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class WebsiteController extends Controller
 {
@@ -59,11 +61,19 @@ class WebsiteController extends Controller
 
     public function confirm_order(Request $request)
     {
+        $this->validate($request,[
+            'channel_code' => 'required',
+            'product_id' => 'required'
+        ]);
+
         $data = $request->all();
         unset($data['_token']);
         $xendit = new XenditController;
         $transaction = new TransactionController;
         $param = $transaction->rumus_param($request);
+        if (!$param) {
+           return redirect()->back()->with('error', 'Isi nomor tujuan');
+        }
         $channels = $xendit->channel_list();
         foreach ($channels as $value) {
             if ($value['channel_code'] == $request->channel_code) {
@@ -71,6 +81,31 @@ class WebsiteController extends Controller
             }
         }
         $product = ProductDetail::where('code', $request->product_id)->first();
+        $product_category = Product::where('id', $product->product_id)->first();
+        if ($product_category->type == 'Pascabayar'){
+            $body = json_encode([
+                'code'              => $product->code,
+                'customer_number'   => $param,
+            ]);
+            $headers = [
+                'Content-Type'  => 'application/json', 
+                'Accept'        => 'application/json',
+                'XXX-Signature' => 'sha1=' . hash_hmac('sha1', $body, env('BILLER_API_SECRET'))
+            ]; 
+            $send = [
+                'headers'   => $headers,
+                'body'      => $body  
+            ];
+            $client = new Client;
+            $result = $client->post(env('BILLER_API_URL')."inquiry", $send)->getBody()->getContents();
+            $response = json_decode($result);
+            if ($response == 200) {
+                $total = $transaction->cek_admin_fee($response->price, $channel_category['channel_category']);
+                return view('layouts.confirm-order', ['data' => $data, 'product' => $product, 'channel' => $channel_category, 'param' => $param, 'total_amount' => $total, 'nickname' => $response->customer_name, 'biller_ref_id' => $response->biller_ref_id]);
+            } else {
+                return redirect()->back()->with('error', 'Nomor tujuan Tidak Ditemukan/ Sudah Dibayar');
+            }
+        }
         $total = $transaction->cek_admin_fee($product->price, $channel_category['channel_category']);
         return view('layouts.confirm-order', ['data' => $data, 'product' => $product, 'channel' => $channel_category, 'param' => $param, 'total_amount' => $total]);
     }

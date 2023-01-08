@@ -16,6 +16,12 @@
                     <td>Harga</td>
                     <td>Rp. {{$product->price}}</td>
                 </tr>
+                @if ($nickname)
+                    <tr>
+                        <td>Nama Penerima</td>
+                        <td>{{$nickname}}</td>
+                    </tr>
+                @endif
                 <tr>
                     <td>Nomor Penerima</td>
                     <td>{{$param}}</td>
@@ -35,6 +41,8 @@
             @foreach ($data as $key => $item)
                 <input type="hidden" name="{{$key}}" value="{{$item}}">
             @endforeach
+            @if <input type="hidden" name="total_amount" value="{{$total_amount}}"> @endif
+            @if <input type="hidden" name="seller_ref_id" value="{{$seller_ref_id}}"> @endif
             <button type="submit" class="btn btn-sm btn-primary">Konfirmasi</button>
         </form>
     </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\XenditController;
 use Illuminate\Support\Str;
 use App\Transaction;
 use App\ProductDetail;
+use App\Product;
 
 
 class TransactionController extends Controller
@@ -21,15 +22,26 @@ class TransactionController extends Controller
                 $channel_category = $value['channel_category'];
             }
         }
+
         $product = ProductDetail::where('code', $request->product_id)->first();
+        $product_category = Product::where('id', $product->product_id)->first();
+        if ($product_category->type == 'Prabayar') {
+            //cek minimal pembayaram
+            if ($channel_category == 'VIRTUAL_ACCOUNT') {
+               if($product->price <= 10000){
+                    return redirect()->route('formtopup', $product_category->slug)->with('error', 'Virtual Account MInimal 10000');
+               }
+            }
+        }
         $data = Transaction::create([
             'id'                => Str::uuid()->toString(),
             'invoice_id'        => 'INV'.time(),
             'payment_id'        => '',
+            'biller_ref_id'     => !empty($request->biller_ref_id) ? $request->biller_ref_id : '' ,
             'payment_status'    => 0,
             'transaction_status'=> 0,
-            'amount'            => $product->price,
-            'total_amount'      => $this->cek_admin_fee($product->price, $request->channel_code),
+            'amount'            => !empty($request->total_amount) ? $request->total_amount :  $product->price,
+            'total_amount'      => !empty($request->total_amount) ? $request->total_amount : $this->cek_admin_fee($product->price, $request->channel_code),
             'customer_number'   => $this->rumus_param($request),
             'nickname'          => '',
             'product_id'        => $request->product_id,
