@@ -107,7 +107,7 @@ class WebsiteController extends Controller
             }
         }
         $total = $transaction->cek_admin_fee($product->price, $channel_category['channel_category']);
-        return view('layouts.confirm-order', ['data' => $data, 'product' => $product, 'channel' => $channel_category, 'param' => $param, 'total_amount' => $total, 'nickname' => null]);
+        return view('layouts.confirm-order', ['data' => $data, 'product' => $product, 'channel' => $channel_category, 'param' => $param, 'total_amount' => $total, 'nickname' => null, 'biller_ref_id' => null]);
     }
 
     
