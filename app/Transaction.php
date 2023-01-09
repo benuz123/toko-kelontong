@@ -22,7 +22,8 @@ class Transaction extends Model
     'channel_code',
     'qr_string',
     'va_number',
-    'biller_ref_id'
+    'biller_ref_id',
+    'sn'
     ];
 
     public function product()
