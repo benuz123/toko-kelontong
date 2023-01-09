@@ -18,4 +18,26 @@ class BillerController extends Controller
 
         return view('backoffice.biller.product-list', ['data' => $data->data]);
     }
+
+    public function callback(Request $request)
+    {
+        $transaction = Transaction::where('invoice_id', $request->data->invoice_id)->first();
+        if (!$transaction) {
+            return response()->json([
+                'status'    => 401,
+                'message'   => 'Unauthorized Access',
+            ], 404);
+        }
+
+            //cek transaksi
+            $transaction->update([
+                'sn'    => $request->data->sn
+            ]);
+
+            return response()->json([
+                'status'    => 201,
+                'message'   => 'Success Create Transaction',
+                'data'      => $transaction
+            ], 200);
+    }
 }
