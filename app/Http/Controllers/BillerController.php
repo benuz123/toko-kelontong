@@ -21,7 +21,7 @@ class BillerController extends Controller
 
     public function callback(Request $request)
     {
-        $transaction = Transaction::where('invoice_id', $request->data->invoice_id)->first();
+        $transaction = Transaction::where('invoice_id', $request->invoice_id)->first();
         if (!$transaction) {
             return response()->json([
                 'status'    => 401,
@@ -31,7 +31,7 @@ class BillerController extends Controller
 
             //cek transaksi
             $transaction->update([
-                'sn'    => $request->data->sn
+                'sn'    => $request->sn
             ]);
 
             return response()->json([
