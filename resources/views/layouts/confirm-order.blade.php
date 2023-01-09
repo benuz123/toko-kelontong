@@ -14,7 +14,7 @@
                 </tr>
                 <tr>
                     <td>Harga</td>
-                    <td>Rp. {{$product->price}}</td>
+                    <td>Rp.  {{$product->price <= 0 ? $total_amount : $product->price}}</td>
                 </tr>
                 @if ($nickname)
                     <tr>
@@ -41,8 +41,8 @@
             @foreach ($data as $key => $item)
                 <input type="hidden" name="{{$key}}" value="{{$item}}">
             @endforeach
-            @if <input type="hidden" name="total_amount" value="{{$total_amount}}"> @endif
-            @if <input type="hidden" name="seller_ref_id" value="{{$seller_ref_id}}"> @endif
+            @if($biller_ref_id) <input type="hidden" name="total_amount" value="{{$total_amount}}"> @endif
+            @if($biller_ref_id) <input type="hidden" name="biller_ref_id" value="{{$biller_ref_id}}"> @endif
             <button type="submit" class="btn btn-sm btn-primary">Konfirmasi</button>
         </form>
     </div>

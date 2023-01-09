@@ -99,9 +99,9 @@ class WebsiteController extends Controller
             $client = new Client;
             $result = $client->post(env('BILLER_API_URL')."inquiry", $send)->getBody()->getContents();
             $response = json_decode($result);
-            if ($response == 200) {
-                $total = $transaction->cek_admin_fee($response->price, $channel_category['channel_category']);
-                return view('layouts.confirm-order', ['data' => $data, 'product' => $product, 'channel' => $channel_category, 'param' => $param, 'total_amount' => $total, 'nickname' => $response->customer_name, 'biller_ref_id' => $response->biller_ref_id]);
+            if ($response->status == 200) {
+                $total = $transaction->cek_admin_fee($response->data->price, $channel_category['channel_category']);
+                return view('layouts.confirm-order', ['data' => $data, 'product' => $product, 'channel' => $channel_category, 'param' => $param, 'total_amount' => $total, 'nickname' => $response->data->name, 'biller_ref_id' => $response->data->biller_ref_id]);
             } else {
                 return redirect()->back()->with('error', 'Nomor tujuan Tidak Ditemukan/ Sudah Dibayar');
             }
