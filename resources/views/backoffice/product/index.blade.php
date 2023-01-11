@@ -5,22 +5,9 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <div class="row">
-            <div class="col col-sm-1">
+        <div class="row mb-3">
               <a href="{{route('product-add')}}" class="btn btn-primary add-button">Tambah</a>
-              
-            </div>
-            <div class="col col-sm-11">
-              <div class="form-group row float-right">
-                <label for="search" class="col-sm-3 col-form-label">Search : </label>
-                <div class="col-sm-8">
-                  <input type="search" class="form-control" id="search" name="search">
-                </div>
-              </div>
-              
-            </div>
-            
-          </div>
+        </div>
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -53,3 +40,12 @@
     </div>
 </div>
 @endsection
+
+
+@push('script')
+<script>
+    $(document).ready( function () {
+        $('#example1').DataTable();
+    } );
+</script>
+@endpush

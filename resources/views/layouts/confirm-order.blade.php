@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px">Konfirmasi Transaksi</h1>
+    <h1 class="text-center text-white" style="margin-top: 40px; margin-bottom: 40px">Konfirmasi Transaksi</h1>
         <br>
     <div class="card">
         <table class="table">

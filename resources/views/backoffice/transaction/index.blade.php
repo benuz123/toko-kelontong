@@ -31,4 +31,14 @@
         </table>
     </div>
 </div>
+
+
 @endsection
+
+@push('script')
+<script>
+    $(document).ready( function () {
+        $('#example1').DataTable();
+    } );
+</script>
+@endpush

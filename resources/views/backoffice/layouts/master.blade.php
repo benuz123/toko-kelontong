@@ -19,6 +19,9 @@
   <link rel="stylesheet" href={{asset("dist/css/adminlte.min.css")}}>
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href={{asset("plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}>
+
+  <!-- DataTable SEARCHING COOOYYYYY-->
+  <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
   @stack('css')
 
 </head>
@@ -193,6 +196,9 @@
 <script src={{asset("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}></script>
 <!-- AdminLTE App -->
 <script src={{asset("dist/js/adminlte.js")}}></script>
+
+<!-- DataTable-->
+<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 @stack('script')
 </body>
 </html>

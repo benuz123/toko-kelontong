@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px">Invoice</h1>
+    <h1 class="text-center text-white" style="margin-top: 40px; margin-bottom: 40px">Invoice</h1>
         <br>
     <div class="card">
         <table class="table">
@@ -24,6 +24,12 @@
                     <td>Nickname</td>
                     <td>{{$transaction->nickname ? $transaction->nickname : '-'}}</td>
                 </tr>
+                @if ($transaction->sn != null)
+                    <tr>
+                        <td>Serial Number</td>
+                        <td>{{$transaction->sn}}</td>
+                    </tr>
+                @endif
                 <tr>
                     <td>Metode Pembayaran</td>
                     <td>{{$channel['name']}}</td>
