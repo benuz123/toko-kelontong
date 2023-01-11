@@ -12,4 +12,10 @@ class ProductDetail extends Model
         'price',
         'code'
     ];
+
+    public function products()
+    {
+        return $this->belongsTo('App\Product', 'product_id', 'id');
+    }
+
 }

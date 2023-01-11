@@ -11,7 +11,8 @@
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Detail Product</th>
+                    <th>Produk</th>
+                    <th>Detail Produk</th>
                     <th>Kode</th>
                     <th>Harga</th>
                     <th>Aksi</th>
@@ -20,6 +21,7 @@
             <tbody>
               @foreach ($details as $detail)
                     <tr>
+                        <td>{{$detail->products->name}}</td>
                         <td>{{$detail->name}}</td>
                         <td>{{$detail->code}}</td>
                         <td>{{$detail->price}}</td>

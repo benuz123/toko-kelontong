@@ -10,7 +10,7 @@ class ProductDetailController extends Controller
 {
     public function index()
     {
-        $details = ProductDetail::get();
+        $details = ProductDetail::with('products')->get();
         return view('backoffice.product_detail.index', [
             'details' => $details
         ]);
