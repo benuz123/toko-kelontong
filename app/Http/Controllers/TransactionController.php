@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use App\Transaction;
 use App\ProductDetail;
 use App\Product;
-
+use Illuminate\Broadcasting\Channel;
 
 class TransactionController extends Controller
 {
@@ -31,6 +31,12 @@ class TransactionController extends Controller
                if($product->price <= 10000){
                     return redirect()->route('formtopup', $product_category->slug)->with('error', 'Virtual Account MInimal 10000');
                }
+            }elseif ($channel_category == 'RETAIL_OUTLET') {
+                if ($product->price <= 10000) {
+                    return redirect()->route('formtopup', $product_category->slug)->with('error', 'Retail Outlet MInimal 10000');
+                }
+            }else{
+                
             }
         }
         $data = Transaction::create([
