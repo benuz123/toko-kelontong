@@ -41,7 +41,7 @@ class TransactionController extends Controller
             'payment_status'    => 0,
             'transaction_status'=> 0,
             'amount'            => !empty($request->total_amount) ? $request->total_amount :  $product->price,
-            'total_amount'      => !empty($request->total_amount) ? $request->total_amount : $this->cek_admin_fee($product->price, $request->channel_code),
+            'total_amount'      => !empty($request->total_amount) ? $request->total_amount : $this->cek_admin_fee($product->price, $channel_category),
             'customer_number'   => $this->rumus_param($request),
             'nickname'          => '',
             'product_id'        => $request->product_id,
