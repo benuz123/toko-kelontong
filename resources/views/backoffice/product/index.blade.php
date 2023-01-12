@@ -24,7 +24,9 @@
                         <td>{{$product->name}}</td>
                         <td>{{$product->code}}</td>
                         <td>{{$product->type}}</td>
-                        <td>{{$product->status}}</td>
+                        @if ($product->status == 1)
+                        <td>Aktif</td>
+                        @else <td>Non Aktif</td>@endif
                         <td class="row">
                           <a href="{{route('product-edit', $product->id)}}" class="btn btn-success btn-sm edit-button ml-3" >Edit</a>
                           <form action="{{route('product-delete', $product->id)}}" method="POST" >
