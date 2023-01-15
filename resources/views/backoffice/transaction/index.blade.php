@@ -34,6 +34,7 @@
                 @endforeach
             </tbody>
         </table>
+        <h4 style="margin-top: 40px; margin-bottom: 40px">Total Transaksi Sukses = Rp.  {{$hasil_total}}</h4>
     </div>
 </div>
 

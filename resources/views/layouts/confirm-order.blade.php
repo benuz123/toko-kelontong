@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>Total Tagihan</td>
-                    <td>{{$total_amount}}</td>
+                    <td>Rp.  {{$total_amount}}</td>
                 </tr>
             </tbody>
         </table>

@@ -12,7 +12,7 @@ use DateTime;
 class XenditController extends Controller
 {
     public function __construct() {
-        Xendit::setApiKey('xnd_development_ygtHzMVBx8uELYpZEBM4mF2sP4abELVPnHmJn8RLKSLUq9d47vPOaQMesxNKd3w');
+        Xendit::setApiKey('xnd_development_ivG5h7oKPYMInzBRzLEnpIc32amzyk8cE1FbBuoiTghESPMiqT7P64oVXe4hM1Mz');
     }
 
     public function get_balance()

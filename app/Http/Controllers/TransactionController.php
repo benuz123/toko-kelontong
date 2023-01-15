@@ -102,7 +102,11 @@ class TransactionController extends Controller
     public function index()
     {
         $data = Transaction::with('product')->orderBy('created_at')->get();
-
-        return view('backoffice.transaction.index', ['transactions' => $data]);
+        $total_pendapatan = Transaction::where('transaction_status', 2)->get();
+        $hasil_total = 0;
+        foreach($total_pendapatan as $total){
+            $hasil_total = $hasil_total + $total->amount;
+        }
+        return view('backoffice.transaction.index', ['transactions' => $data, 'hasil_total' => $hasil_total]);
     }
 }

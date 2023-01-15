@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="card">
-    <h1>Transaksi Terbaru</h1>
     <div class="card-body">
+        <h1>Transaksi Terbaru</h1>
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
