@@ -98,6 +98,10 @@ class WebsiteController extends Controller
             ];
             $client = new Client;
             $result = $client->post(env('BILLER_API_URL')."inquiry", $send)->getBody()->getContents();
+            if (!$result) {
+                return redirect()->back()->with('error', 'Nomor tujuan Tidak Ditemukan/ Sudah Dibayar');
+            }
+
             $response = json_decode($result);
             if ($response->status == 200) {
                 $total = $transaction->cek_admin_fee($response->data->price, $channel_category['channel_category']);
